@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: PT Sans, sans-serif;
+    background-color: #F3F6F9;;
+}
+.wraper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 68px 1fr 1fr 241px;
+    grid-template-areas: 'header header' 'addblock addblock' 'main main' 'footer footer';
+    height: 100vh;
+}
+
+main{
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 146px 2fr 60px 1fr 146px;
+
+    .block {
+        background: #FFFFFF;
+        border-radius: 8px;
+        padding: 20px;
+        min-height: fit-content;
+    }
+
+    .lk-employer {
+        grid-template-columns: 146px 1fr 60px 2fr 146px;
+    }
+}
+@media (min-device-width: 1280px) {
+    main{
+        grid-template-columns: 146px 1fr 60px 2fr 146px;
+        .lk-employer {
+            grid-template-columns: 146px 1fr 60px 2fr 146px;
+        }
+    }
+}
+@media (min-device-width: 1680px) {
+    main{
+        grid-template-columns: 200px 2fr 60px 1fr 200px;
+        .lk-employer {
+            grid-template-columns: 200px 1fr 60px 2fr 200px;
+        }
+    }
+}
+@media (min-device-width: 1920px) {
+    main{
+        grid-template-columns: 320px 2fr 60px 1fr 320px;
+        .lk-employer {
+            grid-template-columns: 300px 1fr 60px 2fr 300px;
+        }
+    }
+}
+button {
+    height: 44px;
+    border-radius: 4px;
+    border: 0;
+    width: 100%;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.addblock{
+    grid-area: addblock;
+    display: grid;
+    grid-template-columns: 146px 1fr 1fr 1fr 146px;margin-bottom: 40px;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 369px;
+    background: #413FAC;
+    margin-bottom: 40px;
+    height: 369px;
+    background: #413FAC;
+}
+
+.left-main-block{
+    grid-column: 2/3;
+    display: grid;
+    grid-row-gap: 40px;
+}
+.right-main-block{
+    grid-column: 4/5;
+    display: grid;
+}
+.search-right-nav {
+    max-width: 300px;
+    background: #ffffff;
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+.heading{
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 19px;
+    color: #535961;
+}

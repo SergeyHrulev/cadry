@@ -1,0 +1,30 @@
+.servise-block{
+    background: #FFFFFF;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    margin-top: 40px;
+    padding: 20px 24px;
+}
+.advertasing-button{
+    width: 208px;
+    height: 41px;
+    background: #DBE1E7;
+    border-radius: 4px;
+    border: none;
+}
+.advertasin-header{
+    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: bold;
+    color: #222222;
+}
+.advertasing-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    margin-top: 40px;
+    padding: 20px 24px;
+}

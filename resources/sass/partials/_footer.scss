@@ -1,0 +1,26 @@
+footer{
+    grid-area: footer;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.company-info{
+    display: grid;
+    grid-template-columns: 120px 1fr 120px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.wrklst{
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+.footer-search{
+    grid-column: 2/3;
+    grid-row: 4/5;
+}
+.footer-info-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: 2/3;
+    grid-row: 5/6;
+}

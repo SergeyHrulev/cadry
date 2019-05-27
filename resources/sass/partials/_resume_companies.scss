@@ -1,0 +1,25 @@
+.companies {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 22px 0 12px;
+    min-height: fit-content;
+
+    .company-block {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 14px;
+        border-bottom: 1px solid #F3F6F9;
+    }
+
+    .avatar {
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(0deg, #9BA6B4, #9BA6B4);
+        border-radius: 80px;
+        margin-right: 14px;
+    }
+
+
+}
+

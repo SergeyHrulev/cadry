@@ -1,0 +1,201 @@
+input{
+    height: 44px;
+    border: 1.6px solid #D4DCE4;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.form-text{
+    border: 1.6px solid #D4DCE4;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+input[type='text']{
+    width: 100%;
+}
+input[type='date']{
+    width: 50%;
+}
+input[type='tel']{
+    width: 50%;
+}
+input[type=email]{
+    width: 50%;
+}
+input[placeholder]{
+    font-family: PT Sans, sans-serif;
+    padding-left: 10px;
+    color: #323232;
+    font-size: 15px;
+    line-height: 19px;
+}
+label{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 19px;/* identical to box height */
+    color: #535961;
+}
+.form-select{
+    height: 44px;
+    border: 1.6px solid #D4DCE4;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.long{
+    width: 100%;
+}
+.short{
+    width: 50%;
+}
+.input-group-inline{
+    with: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.radio-item {
+    display: flex;
+    align-self: center;
+    position: relative;
+    padding: 0 0 10px 0;
+}
+.radio-item:first-child{
+    margin-right: 40px;
+}
+.radio-item input[type='radio'] {
+    display: none;
+}
+
+.radio-item label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.radio-item label:before {
+    content: " ";
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 5px 0 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #5351C7;
+    background-color: transparent;
+}
+
+.radio-item input[type=radio]:checked + label:after {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 7px;
+    left: 2px;
+    content: " ";
+    display: block;
+    border: 10px solid #5351C7;
+}
+
+.form-group{
+    margin-top: 16px;
+    display: grid;
+}
+.slider{
+    width: 252px;
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    height: 10px;
+    background: #F3F6F9;
+    outline: none;
+    border-radius: 20px;
+}
+.slider::-webkit-slider-thumb{
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 22px; /* Set a specific slider handle width */
+    height: 22px; /* Slider handle height */
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.slider::-moz-range-thumb{
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 22px; /* Set a specific slider handle width */
+    height: 22px; /* Slider handle height */
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.nav-pills {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1.6px solid #D4DCE4;
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 44px;
+    justify-items: center;
+    align-items: center;
+    width: 252px;
+}
+.pills{
+    border-left: 1px solid #D4DCE4;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    background: rgba(255, 255, 255, 0.04);
+}
+.pills:first-child{
+    border-left: none;
+    background: #F3F6F9;
+}
+.pills:hover{
+    cursor: pointer;
+}
+input[type='checkbox']{
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+.check-box-group{
+    display: flex;
+    flex-direction: column;
+}
+.check-box-element{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: normal!important;
+}
+button.save-cv{
+    background: #5351C7;
+    color: #FFFFFF;
+    height: 44px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+}
+button.add-job{
+    background: #F3F6F9;
+    color: #5351C7;
+    height: 44px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+}
