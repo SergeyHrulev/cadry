@@ -19,3 +19,7 @@ Route::get('/resume-companies', 'PagesController@resumeCompanies')->name('resume
 Route::get('/show-resume', 'PagesController@showResume')->name('showResume');
 Route::get('/service-page', 'PagesController@servicePage')->name('servicePage');
 Route::get('/employer-vacancy-response', 'PagesController@employerVacancyResponse')->name('employerVacancyResponse');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
