@@ -18,8 +18,8 @@ class CreateEmployersTable extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->string('site')->nullable();
-            $table->integer('phone')->nullable();
-            $table->integer('additional_phone')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('additional_phone')->nullable();
             $table->integer('active_phone')->nullable();
             $table->integer('city_id')->unsigned();
             $table->timestamps();

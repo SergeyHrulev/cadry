@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}"></script>
+
 
     <title>Document</title>
 </head>
@@ -17,7 +17,7 @@
 <header>
     <section class="left-header">
         <div class="logo">
-            <img src="{{ asset('img/icons/Polygon.png') }}" class="logo-img" alt="">
+            <a href="{{ route('main') }}"><img src="{{ asset('img/icons/Polygon.png') }}" class="logo-img" alt="logo"></a>
         </div>
         <ul class="navigation">
             <li>Работодателям</li>
@@ -33,7 +33,7 @@
 @if(Request::is('/'))
 @include('partials.main_page_head')
 @endif
-<main class="main">
+<main class="main" id="app">
     @yield('content')
 </main>
 <footer>
@@ -52,5 +52,6 @@
         <img src="{{ asset('img/map.png') }}" alt="">
     </section>
 </footer>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

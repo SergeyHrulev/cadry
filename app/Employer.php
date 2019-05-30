@@ -19,4 +19,9 @@ class Employer extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    public function vacancy()
+    {
+        return $this->hasMany(Vacancy::class);
+    }
 }

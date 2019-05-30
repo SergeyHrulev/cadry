@@ -7,9 +7,9 @@
 font-size: 22px;
 line-height: 28px;color: #808995;">Похожие вакансии</h3>
         </div>
-        @include('partials.vacancy')
-        @include('partials.vacancy')
-        @include('partials.vacancy')
+        @foreach($vacancies as $vacancy)
+            @include('partials.vacancy', ['vacancy' => $vacancy])
+        @endforeach
     </section>
     <aside id="search">
 
