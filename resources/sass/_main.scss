@@ -32,7 +32,7 @@ main{
 }
 @media (min-device-width: 1280px) {
     main{
-        grid-template-columns: 146px 1fr 60px 2fr 146px;
+        grid-template-columns: 146px 2fr 60px 1fr 146px;
         .lk-employer {
             grid-template-columns: 146px 1fr 60px 2fr 146px;
         }
@@ -42,7 +42,7 @@ main{
     main{
         grid-template-columns: 200px 2fr 60px 1fr 200px;
         .lk-employer {
-            grid-template-columns: 200px 1fr 60px 2fr 200px;
+            grid-template-columns: 300px 1fr 60px 2fr 300px;
         }
     }
 }
