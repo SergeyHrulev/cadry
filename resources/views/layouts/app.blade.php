@@ -14,7 +14,8 @@
     <title>Document</title>
 </head>
 <body class="wraper">
-<header>
+<header id="modal">
+    <register-component></register-component>
     <section class="left-header">
         <div class="logo">
             <a href="{{ route('main') }}"><img src="{{ asset('img/icons/Polygon.png') }}" class="logo-img" alt="logo"></a>
@@ -26,7 +27,11 @@
         </ul>
     </section>
     <section class="right-header">
-        <button class="header-button">Зарегистрироваться</button>
+        @if(Auth::guest())
+        <button class="header-button" @click="openRegisterModal">Зарегистрироваться</button>
+        @else
+            <register-menu-component profile="{{ route('cvEdit')}}" exit="{{ route('logout') }}"></register-menu-component>
+        @endif
         <a href="" class="header-phone">8 800 123 45 67</a>
     </section>
 </header>

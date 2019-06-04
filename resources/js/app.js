@@ -20,7 +20,12 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('register-component', require('./components/RegisterComponent.vue'));
+
+import RegisterComponent from './components/RegisterComponent.vue';
+import RegisterMenuComponent from './components/RegisterMenuComponent.vue';
+import ResumeFormComponent from './components/ResumeFormComponent.vue';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,6 +35,9 @@ window.Vue = require('vue');
 
 const app = new Vue({
     el: '#app',
+    components: {
+        ResumeFormComponent
+    },
     data: {
         name: ''
     }
@@ -39,5 +47,26 @@ var head = new Vue({
     el: '#head',
     data: {
         name: ''
+    }
+});
+
+var modal = new Vue({
+    el: '#modal',
+    components: {
+        RegisterComponent,
+        RegisterMenuComponent
+    },
+    data: {
+
+    },
+    methods: {
+        openRegisterModal(){
+            this.$root.$emit('open');
+        }
+    },
+    mounted(){
+        // window.onclick = () => {
+        //     alert('Close')
+        // }
     }
 });

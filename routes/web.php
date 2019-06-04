@@ -13,13 +13,18 @@
 
 Route::get('/', 'PagesController@index')->name('main');
 Route::get('/test', 'PagesController@test')->name('test');
+
 Route::get('/cv-edit', 'PagesController@cvEdit')->name('cvEdit');
+Route::post('/cv-store', 'CvController@store')->name('cvStore');
+
 Route::get('/vacancy/{name}', 'PagesController@vacancyPage')->name('vacancy');
 Route::get('/category/{name}', 'CategoryController@getCategoryVacancy')->name('category');
 Route::get('/resume-companies', 'PagesController@resumeCompanies')->name('resumeCompanies');
 Route::get('/show-resume', 'PagesController@showResume')->name('showResume');
 Route::get('/service-page', 'PagesController@servicePage')->name('servicePage');
 Route::get('/employer-vacancy-response', 'PagesController@employerVacancyResponse')->name('employerVacancyResponse');
+
+//Route::get('');
 
 Auth::routes();
 
