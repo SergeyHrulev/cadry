@@ -1,0 +1,245 @@
+.response {
+    grid-template-rows: auto;
+    &-menu {
+        grid-column: 1/2;
+        &-nav {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px 24px;
+        }
+        &-nav:first-child {
+            padding-top: 0px;
+        }
+        &-list {
+            padding: 16px 0;
+            border-bottom: 1px solid #F3F6F9;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            color: #3D444D;
+        }
+        &-list:last-child {
+            border: none;
+            padding-bottom: 0;
+        }
+        &-active {
+            font-weight: bold;
+        }
+    }
+    &-contact{
+        grid-column: 1/2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 40px;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px 24px;
+        &-img {
+            margin-right: 20px;
+        }
+    }
+    &-props {
+        &-name {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 19px;
+            color: #3D444D;
+        }
+        &-phone {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            line-height: 17px;
+            color: #808995;
+        }
+    }
+    &-props p {
+        margin-block-start: 0.4em;
+        margin-block-end: 0.4em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    &-balance {
+        grid-column: 1/2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 40px;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        &-data p {
+            margin-block-start: 0.4em;
+            margin-block-end: 0.4em;
+        }
+        &-title {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 19px;
+            color: #111111;
+        }
+        &-summ {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 21px;
+            color: #3D444D;
+        }
+        &-button button {
+            height: auto;
+            background: #F3F6F9;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 18px;
+            color: #5351C7;
+            padding: 9px 14px;
+        }
+    }
+    &-content {
+        grid-column: 3/4;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        &-header {
+            display: block;
+            border-bottom: 1px solid #F3F6F9;
+        }
+        &-header h2 {
+            margin-block-start: 0.5em;
+            margin-block-end: 0.5em;
+        }
+        &-selectors {
+            display: flex;
+            flex-wrap: wrap;
+            &-selector {
+                display: flex;
+                margin-right: 12px;
+                background: #FFFFFF;
+                border: 1px solid #F3F6F9;
+                box-sizing: border-box;
+                border-radius: 8px;
+                margin-bottom: 12px;
+            }
+            &-selector p {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 15px;
+                line-height: 19px;
+                color: #3D444D;
+                margin-block-start: 0.5em;
+                margin-block-end: 0.5em;
+                padding: 2px 8px;
+            }
+            &-selector:hover {
+                cursor: pointer;
+            }
+            &-selector p:first-child {
+                margin-right: 4px;
+            }
+        }
+        &-resume {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #F3F6F9;
+            &-title{
+                display: flex;
+                justify-content: space-between;
+            }
+            &-content {
+                display: flex;
+                justify-content: space-between;
+            }
+            &-imgblock {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-right: 15px;
+                width: 10%;
+                align-items: center;
+            }
+            &-imgblock p {
+                margin-block-start: 0;
+                margin-block-end: 0;
+            }
+            &-imgblock img {
+                background: #FFFFFF;
+                border-radius: 50%;
+            }
+            &-contentblock {
+                width: 80%;
+            }
+            &-contentblock p:first-child {
+                margin-block-start: 0;
+            }
+            &-rightblock {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 10%;
+            }
+            &-navblock {
+                width: 44px;
+                height: 44px;
+                background: #F3F6F9;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            &-grey {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 15px;
+                line-height: 19px;
+                color: #808995;
+            }
+            &-normal {
+                color: #3D444D;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 15px;
+                line-height: 19px;
+            }
+            &-statuses {
+                padding: 4px 8px;
+                border-radius: 8px;
+                width: fit-content;
+            }
+        }
+    }
+
+}
+.resume-applicant-name {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
+}
+.resume-vacancy-name {
+    font-weight: bold;
+}
+.status-expect {
+    background: #EAEAEA;
+}
+.status-invited {
+    background: #FFF4E2;
+}
+.status-accepted {
+    background: #E2FFEA;
+}
+.status-regected {
+    background: #FFE2E2;
+}
+.status-not-comming {
+    background: #FED2FF;
+}

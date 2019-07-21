@@ -13,12 +13,12 @@
 
     <title>Document</title>
 </head>
-<body class="wraper">
+<body class="">
 <header id="modal">
     <register-component></register-component>
     <section class="left-header">
         <div class="logo">
-            <a href="{{ route('main') }}"><img src="{{ asset('img/icons/Polygon.png') }}" class="logo-img" alt="logo"></a>
+            <a href="{{ route('main') }}"><img src="{{ asset('img/icons/Polygon.svg') }}" alt="logo"></a>
         </div>
         <ul class="navigation">
             <li>Работодателям</li>
@@ -30,33 +30,20 @@
         @if(Auth::guest())
         <button class="header-button" @click="openRegisterModal">Зарегистрироваться</button>
         @else
-            <register-menu-component profile="{{ route('cvEdit')}}" exit="{{ route('logout') }}"></register-menu-component>
+            <register-menu-component show="{{ route('showResume') }}" cv="{{ route('cvEdit') }}" exit="{{ route('logout') }}"></register-menu-component>
         @endif
         <a href="" class="header-phone">8 800 123 45 67</a>
     </section>
 </header>
 @if(Request::is('/'))
-@include('partials.main_page_head')
+    @include('partials.main_page_head')
+    @else
+    @include('partials.pagination')
 @endif
-<main class="main" id="app">
+<main class="main-block" id="app">
     @yield('content')
 </main>
-<footer>
-    <section class="company-info">
-        <div class="wrklst">
-            <p>Ворклист</p>
-        </div>
-        <div class="footer-search">
-            Быстрый поиск работы в Санкт-Петербурге <br>Москве и регионах
-        </div>
-        <div class="footer-info-block">
-            <a href="">Правовая информация</a> <a href="">Блог</a> Поддержка клиентов: <a href="">support@info.ru</a>
-        </div>
-    </section>
-    <section>
-        <img src="{{ asset('img/map.png') }}" alt="">
-    </section>
-</footer>
+@include('layouts.footer')
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

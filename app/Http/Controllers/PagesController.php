@@ -44,17 +44,12 @@ class PagesController extends Controller
         return view('pages.resume_companies');
     }
 
-    public function showResume(){
-        return view('pages.show_resume');
-    }
+
 
     public function servicePage()
     {
         return view('pages.service_page');
     }
 
-    public function employerVacancyResponse()
-    {
-        return view('pages.lk_employer.responses');
-    }
+
 }

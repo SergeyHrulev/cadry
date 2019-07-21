@@ -1,17 +1,31 @@
 footer{
+    margin-top: 80px;
     grid-area: footer;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    display: flex;
+    background-color: #fff;
 }
 .company-info{
-    display: grid;
-    grid-template-columns: 120px 1fr 120px;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    flex: 2;
+    padding: 60px 20px 60px 120px;
 }
-
+.company-map {
+    flex: 1;
+}
 .wrklst{
     grid-column: 2/3;
     grid-row: 3/4;
+    display: flex;
+    align-items: center;
+    &-logo {
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(0deg, #F3F6F9, #F3F6F9), linear-gradient(180deg, #7900FF 0%, #CA00FF 100%);
+        border-radius: 50%;
+        margin-right: 12px;
+    }
 }
 .footer-search{
     grid-column: 2/3;

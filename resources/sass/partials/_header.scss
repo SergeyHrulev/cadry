@@ -3,7 +3,8 @@ header{
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-
+    height: 68px;
+    background-color: #fff;
 }
 .left-header{
     display: grid;
@@ -21,6 +22,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
     width: 42px;
     height: 42px;
     left: 40px;
@@ -49,16 +51,7 @@ header{
 ul {
     list-style-type: none!important;
 }
-.logo-img{
-    width: 22.93px;
-    height: 26.35px;
-    left: 62.09px;
-    top: 16.58px;
 
-    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(180deg, #5351C7 0%, #C4C4C4 100%);
-    border-radius: 3px;
-    transform: rotate(44.4deg);
-}
 .header-button{
     grid-column: 2 / 3;
     width: 186px;

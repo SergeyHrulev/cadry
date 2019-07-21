@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 @import "variables";
 @import "main";
-@import "aside";
 @import "partials/header";
 @import "partials/footer";
-@import "partials/vacancy";
 @import "partials/search_group";
 @import "partials/servise_block";
 @import "partials/main-page-head";
@@ -14,3 +12,8 @@
 @import "partials/show-resume";
 @import "partials/service-page";
 @import "partials/register/register";
+@import "partials/left-main-block";
+@import "partials/employer/response";
+@import "partials/employer/jobs";
+@import "partials/employer/search";
+@import "partials/employer/settings";

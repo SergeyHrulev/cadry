@@ -1,0 +1,92 @@
+.content {
+    grid-column: 1/2;
+    display: grid;
+    grid-row-gap: 40px;
+    height: fit-content;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    &-card {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px 26px 20px 26px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        &-header-section {
+            border-bottom: 1px solid #F3F6F9;
+        }
+        &-content-section {
+            padding-bottom: 20px;
+        }
+        &-block-headers {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 25px;
+            color: #808995;
+            margin-block-start: 0.7em;
+            margin-block-end: 0.7em;
+        }
+        &-heading {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 28px;
+            color: #111111;
+            margin-block-start: 0.5em;
+            margin-block-end: 0.5em;
+        }
+        &-heading > a {
+            text-decoration: none;
+            color: #111111;
+            cursor: pointer;
+        }
+        &-subheading {
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 21px;
+            color: #3D444D;;
+            margin-block-start: 0.7em;
+            margin-block-end: 0.7em;
+        }
+        &-footer {
+            border-top: 1px solid #F3F6F9;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+            &-left {
+                text-align: left;
+            }
+            &-right {
+                text-align: right;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 18px;
+                color: #808995;
+            }
+        }
+        &-footer p {
+            margin-block-start: 0.5em;
+            margin-block-end: 0.5em;
+        }
+        &-company {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 21px;
+            color: #5351C7;
+        }
+        &-company-address {
+            text-align: right;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 18px;
+            color: #808995;
+        }
+    }
+}
+

@@ -4,8 +4,9 @@
             <h2 class="heading">Личные данные</h2>
             <section class="resume-main-content">
                 <div class="resume-avatar">
-                    <img src="" alt="">
-                    <a href="">Загрузить</a>
+                    <img :src="image" alt="">
+                    <input type="file" ref="avatar" style="display: none" v-on:change="handleFileUpload()">
+                    <a @click="$refs.avatar.click()">Загрузить</a>
                 </div>
                 <div class="resume-main-form">
                     <div class="form-group">
@@ -100,21 +101,16 @@
                 <form class="resume-main-form" action="">
                     <div class="form-group">
                         <label for="">Год работы</label>
-                        <select class="form-select short" name="" id="">
-                            <option value="Saint-Petersburg">2019</option>
-                            <option value="Moscow">2018</option>
-                            <option value="Prague">2017</option>
-                            <option value="Prague">2016</option>
-                        </select>
+                        <input type="text" v-model="date">
                     </div>
                     <div class="form-group">
                         <div class="form-group">
                             <label for="">Место работы и обязанности</label>
-                            <textarea class="form-text" name="" id="" cols="30" rows="10"></textarea>
+                            <textarea class="form-text" name="" cols="30" rows="10" v-model="description"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button class="add-job">Добавить еще одно место работы</button>
+                        <button class="add-job" @click.prevent="addJob()">Добавить еще одно место работы</button>
                     </div>
                 </form>
             </section>
@@ -135,10 +131,11 @@
     import axios from 'axios';
     export default {
         name: "ResumeFormComponent",
+        props: ['user'],
         data(){
             return {
-                    first_name: '',
-                    last_name: '',
+                    first_name: this.user.first_name,
+                    last_name: this.user.last_name,
                     email: '',
                     sex: '',
                     date_of_birth: '',
@@ -148,11 +145,16 @@
                     work_permit: '',
                     wage_level: '',
                     payment_period: '',
+                    date: '',
+                    description: '',
+                    cvs: [],
+                    avatar: '',
+                    image: '',
             }
         },
         methods:{
             upload(){
-                axios.post('/cv-store', {
+                axios.post('/resume-store', {
                     first_name: this.first_name,
                     last_name: this.last_name,
                     email: this.email,
@@ -163,12 +165,40 @@
                     phone: this.phone,
                     work_permit: this.work_permit,
                     wage_level: this.wage_level,
-                    payment_period: this.payment_period
+                    payment_period: this.payment_period,
+                    cvs: this.cvs,
                 })
                     .then(res => {
                         console.log(res.data);
                         this.data = res.data;
                     })
+            },
+
+            addJob(){
+                axios.post('/cv-store', {
+                    date: this.date,
+                    description: this.description
+                }).then(res => {
+                    console.log(res.data.id);
+                    this.cvs.push(res.data.id);
+                })
+            },
+
+            handleFileUpload(){
+                this.avatar = this.$refs.avatar.files[0];
+                let formData = new FormData();
+                formData.append('avatar', this.avatar);
+
+                axios.post('/avatar-store', formData,
+                    {
+                        headers: {
+                            'Content-type' : 'multipart/form-data'
+                            }
+                    }
+                ).then(res => {
+                    console.log(res.data);
+                    this.image = res.data;
+                });
             }
         }
     }

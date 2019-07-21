@@ -1,6 +1,12 @@
+.header-section {
+    background-color: #413FAC;
+    grid-template-rows: 20px 1fr 50px 60px 20px;
+    margin-bottom: 40px;
+}
 .main-page-head{
     grid-column: 2/3;
     grid-row: 2/3;
+    width: 50%;
 }
 .button-block{
     grid-column: 2/5;
@@ -23,19 +29,19 @@
     cursor: pointer;
 }
 .tab-block{
-    grid-row: 3/4;
+    grid-row: 4/5;
     grid-column: 2/3;
-    align-self: end;
     display: flex;
-    justify-content: space-around;
+    align-self: baseline;
 }
 .bottom-tab{
     font-weight: bold;
     font-size: 17px;
     line-height: 22px;
     color: #fff;
-    padding-bottom: 20px;
-    border-bottom: 4px solid #fff;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #fff;
+    margin-right: 20px;
 }
 .bottom-tab:hover{
     cursor: pointer;

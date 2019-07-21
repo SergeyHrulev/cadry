@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,6 +31,16 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+
+    public function redirectTo()
+    {
+        $user = User::find(Auth::id());
+        if ($user->typpe == 'applicant') {
+            return 'cv-edit';
+        } else {
+            return '/';
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -73,14 +85,8 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'password' => Hash::make($pass),
         ]);
-//
-//        return $user;
-//
-//        if (!$user) {
-//            return 'error';
-//        } else {
-//            return 'success';
-//        }
 
     }
+
+
 }

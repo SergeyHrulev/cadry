@@ -2,16 +2,19 @@
     <div id="register-profile" style="grid-column: 2/3;">
         <img src="img/icons/avatar.png" alt="" @click="showMenu">
         <div class="profile-menu" v-bind:class="{ profileshow: isHidden }">
-            <a :href="profile">Профиль</a>
-            <a :href="exit">Выход</a>
+            <a :href="cv">Создать резюме</a>
+            <a :href="show">Мои резюме</a>
+            <a href="#" @click.prevent="logout">Выход</a>
         </div>
+        <form ref="form" :action="exit" method="POST" style="display: none;">
+        </form>
     </div>
 </template>
 
 <script>
     export default {
         name: "RegisterMenuComponent",
-        props: ['profile', 'exit'],
+        props: ['cv', 'show', 'exit'],
         data(){
             return {
                 isHidden: false,
@@ -20,6 +23,9 @@
         methods:{
             showMenu(){
                 this.isHidden = true
+            },
+            logout(){
+                this.$refs.form.submit()
             }
         }
     }
@@ -38,6 +44,7 @@
     }
     .profile-menu a{
         text-decoration: none;
+        padding: 10px;
     }
     .profileshow{
         display: flex;

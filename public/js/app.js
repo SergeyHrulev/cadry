@@ -1823,6 +1823,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RegisterComponent",
@@ -1833,7 +1836,8 @@ __webpack_require__.r(__webpack_exports__);
       last_name: '',
       phone: '',
       email: '',
-      role: ''
+      role: '',
+      url: 'http://cadry/register'
     };
   },
   methods: {
@@ -1853,12 +1857,9 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         role: this.role
       }).then(function (res) {
-        if (res == 'success') {
-          _this.isActive = true;
-        } else {
-          alert('Произошла ошибка, попробуйте еще раз');
-        }
+        _this.url = res.data;
       });
+      this.isActive = true;
     }
   },
   mounted: function mounted() {
@@ -1891,9 +1892,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RegisterMenuComponent",
-  props: ['profile', 'exit'],
+  props: ['cv', 'show', 'exit'],
   data: function data() {
     return {
       isHidden: false
@@ -1902,6 +1906,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showMenu: function showMenu() {
       this.isHidden = true;
+    },
+    logout: function logout() {
+      this.$refs.form.submit();
     }
   }
 });
@@ -2048,17 +2055,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ResumeFormComponent",
+  props: ['user'],
   data: function data() {
     return {
-      first_name: '',
-      last_name: '',
+      first_name: this.user.first_name,
+      last_name: this.user.last_name,
       email: '',
       sex: '',
       date_of_birth: '',
@@ -2067,14 +2071,19 @@ __webpack_require__.r(__webpack_exports__);
       phone: '',
       work_permit: '',
       wage_level: '',
-      payment_period: ''
+      payment_period: '',
+      date: '',
+      description: '',
+      cvs: [],
+      avatar: '',
+      image: ''
     };
   },
   methods: {
     upload: function upload() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/cv-store', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/resume-store', {
         first_name: this.first_name,
         last_name: this.last_name,
         email: this.email,
@@ -2085,10 +2094,38 @@ __webpack_require__.r(__webpack_exports__);
         phone: this.phone,
         work_permit: this.work_permit,
         wage_level: this.wage_level,
-        payment_period: this.payment_period
+        payment_period: this.payment_period,
+        cvs: this.cvs
       }).then(function (res) {
         console.log(res.data);
         _this.data = res.data;
+      });
+    },
+    addJob: function addJob() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/cv-store', {
+        date: this.date,
+        description: this.description
+      }).then(function (res) {
+        console.log(res.data.id);
+
+        _this2.cvs.push(res.data.id);
+      });
+    },
+    handleFileUpload: function handleFileUpload() {
+      var _this3 = this;
+
+      this.avatar = this.$refs.avatar.files[0];
+      var formData = new FormData();
+      formData.append('avatar', this.avatar);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/avatar-store', formData, {
+        headers: {
+          'Content-type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        console.log(res.data);
+        _this3.image = res.data;
       });
     }
   }
@@ -6572,7 +6609,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.profile-menu[data-v-2f1c24c0]{\n    display: none;\n    position: fixed;\n    top: 68px;\n    background-color: #fff;\n    flex-direction: column;\n    min-height: 60px;\n    padding:10px 40px 10px 10px;\n    justify-content: space-around;\n}\n.profile-menu a[data-v-2f1c24c0]{\n    text-decoration: none;\n}\n.profileshow[data-v-2f1c24c0]{\n    display: flex;\n}\n", ""]);
+exports.push([module.i, "\n.profile-menu[data-v-2f1c24c0]{\n    display: none;\n    position: fixed;\n    top: 68px;\n    background-color: #fff;\n    flex-direction: column;\n    min-height: 60px;\n    padding:10px 40px 10px 10px;\n    justify-content: space-around;\n}\n.profile-menu a[data-v-2f1c24c0]{\n    text-decoration: none;\n    padding: 10px;\n}\n.profileshow[data-v-2f1c24c0]{\n    display: flex;\n}\n", ""]);
 
 // exports
 
@@ -38114,203 +38151,203 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-section" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-block" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "role" } }, [
-                  _vm._v("Какова ваша роль?")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group-inline" }, [
-                  _c("div", { staticClass: "radio-item" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.role,
-                          expression: "role"
-                        }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        id: "ritema",
-                        name: "role",
-                        value: "1",
-                        checked: ""
-                      },
-                      domProps: { checked: _vm._q(_vm.role, "1") },
-                      on: {
-                        change: function($event) {
-                          _vm.role = "1"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "radio", attrs: { for: "ritema" } },
-                      [_vm._v("Соискатель")]
-                    )
+          _c("form", { attrs: { action: _vm.url, method: "POST" } }, [
+            _c("div", { staticClass: "form-section" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-block" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "role" } }, [
+                    _vm._v("Какова ваша роль?")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "radio-item" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.role,
-                          expression: "role"
+                  _c("div", { staticClass: "input-group-inline" }, [
+                    _c("div", { staticClass: "radio-item" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.role,
+                            expression: "role"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "ritema",
+                          name: "role",
+                          value: "1",
+                          checked: ""
+                        },
+                        domProps: { checked: _vm._q(_vm.role, "1") },
+                        on: {
+                          change: function($event) {
+                            _vm.role = "1"
+                          }
                         }
-                      ],
-                      attrs: {
-                        type: "radio",
-                        id: "ritemb",
-                        name: "role",
-                        value: "2"
-                      },
-                      domProps: { checked: _vm._q(_vm.role, "2") },
-                      on: {
-                        change: function($event) {
-                          _vm.role = "2"
-                        }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        { staticClass: "radio", attrs: { for: "ritema" } },
+                        [_vm._v("Соискатель")]
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "radio", attrs: { for: "ritemb" } },
-                      [_vm._v("Работодатель")]
-                    )
+                    _c("div", { staticClass: "radio-item" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.role,
+                            expression: "role"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "ritemb",
+                          name: "role",
+                          value: "2"
+                        },
+                        domProps: { checked: _vm._q(_vm.role, "2") },
+                        on: {
+                          change: function($event) {
+                            _vm.role = "2"
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        { staticClass: "radio", attrs: { for: "ritemb" } },
+                        [_vm._v("Работодатель")]
+                      )
+                    ])
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "first_name" } }, [_vm._v("Имя")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.first_name,
-                      expression: "first_name"
-                    }
-                  ],
-                  attrs: {
-                    type: "text",
-                    name: "first_name",
-                    placeholder: "Имя"
-                  },
-                  domProps: { value: _vm.first_name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.first_name = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "last_name" } }, [
-                  _vm._v("Фамилия")
                 ]),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.last_name,
-                      expression: "last_name"
-                    }
-                  ],
-                  attrs: {
-                    type: "text",
-                    name: "last_name",
-                    placeholder: "Фамилия"
-                  },
-                  domProps: { value: _vm.last_name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "first_name" } }, [
+                    _vm._v("Имя")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.first_name,
+                        expression: "first_name"
                       }
-                      _vm.last_name = $event.target.value
+                    ],
+                    attrs: {
+                      type: "text",
+                      name: "first_name",
+                      placeholder: "Имя"
+                    },
+                    domProps: { value: _vm.first_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.first_name = $event.target.value
+                      }
                     }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "phone" } }, [_vm._v("Телефон")]),
+                  })
+                ]),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.phone,
-                      expression: "phone"
-                    }
-                  ],
-                  attrs: {
-                    type: "text",
-                    name: "phone",
-                    placeholder: "999-999-99-99"
-                  },
-                  domProps: { value: _vm.phone },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "last_name" } }, [
+                    _vm._v("Фамилия")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.last_name,
+                        expression: "last_name"
                       }
-                      _vm.phone = $event.target.value
+                    ],
+                    attrs: {
+                      type: "text",
+                      name: "last_name",
+                      placeholder: "Фамилия"
+                    },
+                    domProps: { value: _vm.last_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.last_name = $event.target.value
+                      }
                     }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+                  })
+                ]),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.email,
-                      expression: "email"
-                    }
-                  ],
-                  attrs: { type: "email", name: "email" },
-                  domProps: { value: _vm.email },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "phone" } }, [_vm._v("Телефон")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.phone,
+                        expression: "phone"
                       }
-                      _vm.email = $event.target.value
+                    ],
+                    attrs: {
+                      type: "text",
+                      name: "phone",
+                      placeholder: "999-999-99-99"
+                    },
+                    domProps: { value: _vm.phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.phone = $event.target.value
+                      }
                     }
-                  }
-                })
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.email,
+                        expression: "email"
+                      }
+                    ],
+                    attrs: { type: "email", name: "email" },
+                    domProps: { value: _vm.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.email = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("button", { on: { click: _vm.sendRegistration } }, [
-                  _vm._v("Продолжить")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticStyle: { flex: "1" } })
+              _c("div", { staticStyle: { flex: "1" } })
+            ])
           ])
         ]
       )
@@ -38335,6 +38372,14 @@ var staticRenderFns = [
       _c("div", { staticClass: "avatar-form-input" }, [
         _c("img", { attrs: { src: "img/icons/avatar.png", alt: "" } })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Продолжить")])
     ])
   }
 ]
@@ -38375,11 +38420,31 @@ var render = function() {
         "div",
         { staticClass: "profile-menu", class: { profileshow: _vm.isHidden } },
         [
-          _c("a", { attrs: { href: _vm.profile } }, [_vm._v("Профиль")]),
+          _c("a", { attrs: { href: _vm.cv } }, [_vm._v("Создать резюме")]),
           _vm._v(" "),
-          _c("a", { attrs: { href: _vm.exit } }, [_vm._v("Выход")])
+          _c("a", { attrs: { href: _vm.show } }, [_vm._v("Мои резюме")]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.logout($event)
+                }
+              }
+            },
+            [_vm._v("Выход")]
+          )
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("form", {
+        ref: "form",
+        staticStyle: { display: "none" },
+        attrs: { action: _vm.exit, method: "POST" }
+      })
     ]
   )
 }
@@ -38410,7 +38475,32 @@ var render = function() {
       _c("h2", { staticClass: "heading" }, [_vm._v("Личные данные")]),
       _vm._v(" "),
       _c("section", { staticClass: "resume-main-content" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "resume-avatar" }, [
+          _c("img", { attrs: { src: _vm.image, alt: "" } }),
+          _vm._v(" "),
+          _c("input", {
+            ref: "avatar",
+            staticStyle: { display: "none" },
+            attrs: { type: "file" },
+            on: {
+              change: function($event) {
+                return _vm.handleFileUpload()
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.$refs.avatar.click()
+                }
+              }
+            },
+            [_vm._v("Загрузить")]
+          )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "resume-main-form" }, [
           _c("div", { staticClass: "form-group" }, [
@@ -38877,12 +38967,89 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(0)
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(2),
+    _c("section", { staticClass: "resume-edit" }, [
+      _c("h2", { staticClass: "heading" }, [_vm._v("Опыт работы")]),
+      _vm._v(" "),
+      _c("section", { staticClass: "resume-main-content" }, [
+        _c("form", { staticClass: "resume-main-form", attrs: { action: "" } }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Год работы")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.date,
+                  expression: "date"
+                }
+              ],
+              attrs: { type: "text" },
+              domProps: { value: _vm.date },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.date = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "" } }, [
+                _vm._v("Место работы и обязанности")
+              ]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.description,
+                    expression: "description"
+                  }
+                ],
+                staticClass: "form-text",
+                attrs: { name: "", cols: "30", rows: "10" },
+                domProps: { value: _vm.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.description = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "add-job",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.addJob()
+                  }
+                }
+              },
+              [_vm._v("Добавить еще одно место работы")]
+            )
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "section",
@@ -38923,16 +39090,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "resume-avatar" }, [
-      _c("img", { attrs: { src: "", alt: "" } }),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("Загрузить")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("label", { attrs: { for: "" } }, [
         _vm._v("Желаемые должности "),
@@ -38945,57 +39102,6 @@ var staticRenderFns = [
         staticClass: "form-text",
         attrs: { name: "", id: "", cols: "30", rows: "10" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "resume-edit" }, [
-      _c("h2", { staticClass: "heading" }, [_vm._v("Опыт работы")]),
-      _vm._v(" "),
-      _c("section", { staticClass: "resume-main-content" }, [
-        _c("form", { staticClass: "resume-main-form", attrs: { action: "" } }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Год работы")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              { staticClass: "form-select short", attrs: { name: "", id: "" } },
-              [
-                _c("option", { attrs: { value: "Saint-Petersburg" } }, [
-                  _vm._v("2019")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Moscow" } }, [_vm._v("2018")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Prague" } }, [_vm._v("2017")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Prague" } }, [_vm._v("2016")])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "" } }, [
-                _vm._v("Место работы и обязанности")
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                staticClass: "form-text",
-                attrs: { name: "", id: "", cols: "30", rows: "10" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("button", { staticClass: "add-job" }, [
-              _vm._v("Добавить еще одно место работы")
-            ])
-          ])
-        ])
-      ])
     ])
   }
 ]

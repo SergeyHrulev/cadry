@@ -8,6 +8,7 @@
                     Зарегистрируйтесь, чтобы разместить резюме и отправлять отклики на вакансии.
                 </div>
             </div>
+            <form v-bind:action="url" method="POST">
             <div class="form-section">
                 <div class="avatar-form">
                     <div class="avatar-form-input">
@@ -45,13 +46,15 @@
                         <input type="email" name="email" v-model="email">
                     </div>
                     <div class="form-group">
-                        <button @click="sendRegistration">Продолжить</button>
+                        <button type="submit">Продолжить</button>
                     </div>
                 </div>
+
                 <div style="flex: 1;">
 
                 </div>
             </div>
+            </form>
         </section>
     </section>
 </template>
@@ -67,7 +70,8 @@
                 last_name: '',
                 phone: '',
                 email: '',
-                role: ''
+                role: '',
+                url: 'http://cadry/register'
             }
         },
         methods: {
@@ -85,12 +89,10 @@
                     email: this.email,
                     role: this.role
                 }).then(res => {
-                    if (res == 'success'){
-                        this.isActive = true
-                    } else {
-                        alert('Произошла ошибка, попробуйте еще раз')
-                    }
-                });
+                    this.url = res.data
+                })
+
+                this.isActive = true
             }
         },
         mounted(){
